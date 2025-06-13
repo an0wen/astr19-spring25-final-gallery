@@ -35,8 +35,7 @@ with open(OUTPUT_FILE, "w") as f:
         url = row["url"]
         name = row["name"]
         desc = row["description"]
-        if os.path.exists(os.path.join(IMAGE_DIR, filename)):
-            f.write(f"""
+        f.write(f"""
     <div class="gallery-item">
       <img src="{url}" alt="{name}'s image">
       <div class="caption"><strong>{name}</strong><br>{desc}</div>
