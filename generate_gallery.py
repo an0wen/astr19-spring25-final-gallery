@@ -1,15 +1,11 @@
 import csv
-import os
 
-IMAGE_DIR = "images"
-METADATA_FILE = "metadata.csv"
 OUTPUT_FILE = "index.html"
+METADATA_FILE = "metadata.csv"
 
-entries = []
 with open(METADATA_FILE, newline='') as f:
     reader = csv.DictReader(f)
-    for row in reader:
-        entries.append(row)
+    entries = list(reader)
 
 with open(OUTPUT_FILE, "w") as f:
     f.write("""<!DOCTYPE html>
@@ -32,17 +28,24 @@ with open(OUTPUT_FILE, "w") as f:
 """)
 
     for row in entries:
-        url = row["url"]
-        name = row["name"]
-        desc = row["description"]
+        token = row["token"].strip()
+        name = row["name"].strip()
+        description = row["description"].strip()
+
+        thumb_url = f"https://lh3.googleusercontent.com/d/{token}"
+        full_url = f"https://drive.google.com/uc?export=view&id={token}"
+
         f.write(f"""
     <div class="gallery-item">
-      <img src="{url}" alt="{name}'s image">
-      <div class="caption"><strong>{name}</strong><br>{desc}</div>
+      <a href="{full_url}" target="_blank" rel="noopener noreferrer">
+        <img src="{thumb_url}">
+      </a>
+      <div class="caption"><strong>{name}</strong><br>{description}</div>
     </div>
 """)
 
     f.write("""
   </div>
 </body>
-</html>""")
+</html>
+""")
