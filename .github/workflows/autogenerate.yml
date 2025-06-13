@@ -1,0 +1,32 @@
+name: Auto-generate gallery
+
+on:
+  push:
+    paths:
+      - 'metadata.csv'
+      - 'generate_gallery.py'
+      - '.github/workflows/autogenerate.yml'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Generate gallery HTML
+        run: python generate_gallery.py
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Auto-update gallery" || echo "No changes to commit"
+          git push
