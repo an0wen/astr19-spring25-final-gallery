@@ -12,7 +12,7 @@ with open(OUTPUT_FILE, "w") as f:
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ASTR 19 – Carina Nebula Gallery</title>
+  <title>ASTR 19 - Carina Nebula Gallery</title>
   <style>
     body { font-family: sans-serif; background-color: #111; color: #eee; text-align: center; }
     h1 { margin-top: 20px; }
@@ -23,7 +23,7 @@ with open(OUTPUT_FILE, "w") as f:
   </style>
 </head>
 <body>
-  <h1>ASTR 19 – Carina Nebula Student Gallery</h1>
+  <h1>ASTR 19 - Spring 2025: Carina Nebula Gallery (Final Project)</h1>
   <div class="gallery">
 """)
 
