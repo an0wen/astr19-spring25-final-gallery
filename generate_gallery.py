@@ -1,7 +1,15 @@
+import csv
 import os
 
 IMAGE_DIR = "images"
+METADATA_FILE = "metadata.csv"
 OUTPUT_FILE = "index.html"
+
+entries = []
+with open(METADATA_FILE, newline='') as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        entries.append(row)
 
 with open(OUTPUT_FILE, "w") as f:
     f.write("""<!DOCTYPE html>
@@ -23,13 +31,15 @@ with open(OUTPUT_FILE, "w") as f:
   <div class="gallery">
 """)
 
-    for filename in sorted(os.listdir(IMAGE_DIR)):
-        if filename.lower().endswith((".png", ".jpg", ".jpeg")):
-            name = filename.split("_")[0]  # assumes FirstnameLastname_Carina.png
+    for row in entries:
+        url = row["url"]
+        name = row["name"]
+        desc = row["description"]
+        if os.path.exists(os.path.join(IMAGE_DIR, filename)):
             f.write(f"""
     <div class="gallery-item">
-      <img src="{IMAGE_DIR}/{filename}" alt="{name}'s Carina Nebula">
-      <div class="caption">{name}</div>
+      <img src="{url}" alt="{name}'s image">
+      <div class="caption"><strong>{name}</strong><br>{desc}</div>
     </div>
 """)
 
