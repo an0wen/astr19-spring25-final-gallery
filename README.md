@@ -1,5 +1,6 @@
 # ASTR19 - Spring 2025: Final Gallery
-Gallery of JWST images of NGC from the Final Project of ASTR19 - Spring 2025
+Gallery of JWST images of NGC from the Final Project of ASTR19 - Spring 2025.
+The gallery can be seen using this link: https://an0wen.github.io/astr19-spring25-final-gallery/
 
 To upload your project:
 - upload your image to the Google Drive (make sure you are connected with your UCSC email): `https://drive.google.com/drive/folders/1vG__66k1aCSRY6wpgY2DGLeb8MkfyLto?usp=drive_link`
