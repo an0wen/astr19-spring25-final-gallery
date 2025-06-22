@@ -4,7 +4,7 @@ OUTPUT_FILE = "index.html"
 METADATA_FILE = "metadata.csv"
 
 with open(METADATA_FILE, newline='') as f:
-    reader = csv.DictReader(f)
+    reader = csv.DictReader(f,quotechar='"')
     entries = list(reader)
 
 with open(OUTPUT_FILE, "w") as f:
